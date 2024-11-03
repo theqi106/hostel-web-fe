@@ -1,11 +1,23 @@
-const initState = {
-    userData: {}
-}
-const userReducer = (state = initState, action) => {
-    switch (action.type) {
+import actionType from "../actions/actionType";
 
-        default:
-                return state;
-    }
-}
+const initState = {
+  currentData: {},
+};
+const userReducer = (state = initState, action) => {
+  switch (action.type) {
+    case actionType.GET_CURRENT:
+      return {
+        ...state,
+        currentData: action.currentData || {},
+      };
+    case actionType.LOGOUT:
+      return {
+        ...state,
+        currentData: {},
+      };
+
+    default:
+      return state;
+  }
+};
 export default userReducer;

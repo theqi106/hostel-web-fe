@@ -4,10 +4,24 @@ const initState = {
   token: null,
   msg: "",
   update: false,
+  msgSuccess: "",
 };
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actionType.REGISTER_SUCCES:
+      return {
+        ...state,
+        isLogin: false,
+        token: action.data,
+        msg: "",
+        msgSuccess: "Register succesfully!",
+        update: !state.update,
+      };
+    case actionType.RESET_MSG_SUCCESS:
+      return {
+        ...state,
+        msgSuccess: "",
+      };
     case actionType.LOGIN_SUCCES:
       return {
         ...state,
@@ -30,6 +44,7 @@ const authReducer = (state = initState, action) => {
         isLogin: false,
         token: null,
         msg: "",
+        msgSuccess: "",
       };
     default:
       return state;

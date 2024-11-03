@@ -11,25 +11,24 @@ export const InputForm = ({
 }) => {
   return (
     <div>
-      <label htmlFor="phone" className="text-xs">
+      <label htmlFor={keyPayload} className="text-xs">
         {lable}
       </label>
       <input
         type={type || "text"}
-        id="phone"
+        id={keyPayload}
         className="outline-none bg-[#e8f0fe] p-2 rounded-md w-full"
         value={value}
         onChange={(e) => {
           setValue((prev) => ({ ...prev, [keyPayload]: e.target.value }));
         }}
-        onFocus={() => setInvalidField([])}
+        onFocus={() => setInvalidField && setInvalidField([])}
       />
-      {invalidField.length > 0 &&
-        invalidField.some((i) => i.name === keyPayload) && (
-          <small className="text-red-500 italic">
-            {invalidField.find((i) => i.name === keyPayload)?.msg}
-          </small>
-        )}
+      {invalidField?.some((i) => i.name === keyPayload) && (
+        <small className="text-red-500 italic">
+          {invalidField.find((i) => i.name === keyPayload)?.msg}
+        </small>
+      )}
     </div>
   );
 };

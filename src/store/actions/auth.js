@@ -8,6 +8,7 @@ export const register = (payload) => async (dispath) => {
       dispath({
         type: actionType.REGISTER_SUCCES,
         data: response.data.token,
+        msgSuccess: response.data.msgSuccess
       });
     } else {
       dispath({
