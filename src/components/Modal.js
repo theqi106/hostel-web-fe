@@ -111,8 +111,8 @@ const Modal = ({
           percent1 === percent2 && percent1 === 100
             ? ""
             : `${convert100ToTarget(max)}`
-        }   ${name === "price" ? "triệu" : "m2"} ${
-          percent1 === percent2 && percent1 === 100 && "trở lên"
+        } ${name === "price" ? "triệu" : "m2"} ${
+          percent1 === percent2 && percent1 === 100 ? "trở lên" : ""
         }`,
       },
       {
